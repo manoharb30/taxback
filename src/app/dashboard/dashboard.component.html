@@ -1,0 +1,41 @@
+<div class="container text-center">
+  <h1 class="display-4  info-color"> Transaction Dashboard </h1>
+</div>
+
+<div class="container">
+  <a (click)="addTransaction()" class="btn-floating btn-lg purple-gradient waves-light" mdbWavesEffect>
+    <i class="fa fa-plus-circle">ADD TRANSACTION</i>
+  </a>
+</div>
+<div class="container">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>USER</th>
+        <th>AMOUNT</th>
+        <th>CURRENCY</th>
+        <th>DATE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of transdata$">
+        <th scope="row">{{ data.id }}</th>
+        <td> {{data.user}} </td>
+        <td> {{data.amount}} </td>
+        <td> {{data.currency}} </td>
+        <td>{{data.txn_date}}</td>
+        <td>
+          <a (click)="handleData(data)" class="btn-floating peach-gradient waves-light" mdbWavesEffect>
+            <i class="fa fa-edit"></i>
+          </a>
+        </td>
+        <td>
+          <a (click)="handleDelete(data)" class="btn-floating peach-gradient waves-light" mdbWavesEffect>
+            <i class="fa fa-trash"></i>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

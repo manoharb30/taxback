@@ -1,0 +1,61 @@
+<div class="container">
+  <form #form="ngForm" (ngSubmit)="onSubmit(form.value, form.valid)" novalidate>
+    <p class="h5 text-center mb-4">Edit A Transaction</p>
+
+    <div class="md-form">
+      <i class="fa fa-id-badge prefix grey-text"></i>
+      <input type="number" id="id" name="id" #id="ngModel" required class="form-control" [ngModel]="detail?.id" mdbInputDirective>
+      <div *ngIf="id.errors?.required && (id.dirty || id.touched ) " class="error">
+        ID is required
+      </div>
+      <label for="id">ID</label>
+    </div>
+
+    <div class="md-form">
+      <i class="fa fa-user prefix grey-text"></i>
+      <input type="email" id="userName" name="userName" #userName="ngModel" required email pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" class="form-control" [ngModel]="detail?.user" mdbInputDirective>
+      <div *ngIf="userName.errors?.required &&  (userName.dirty || userName.touched ) " class="error">
+        user name is required
+      </div>
+      <div [hidden]="!userName.hasError('pattern')" class="error">Email format should be
+        <small>
+          <b>joe@abc.com</b>
+        </small>
+      </div>
+      <label for="userName">User name</label>
+    </div>
+    <div class="md-form">
+      <i class="fa fa-money prefix grey-text"></i>
+      <input type="number" id="amount" name="amount" #amount="ngModel" required class="form-control" [ngModel]="detail?.amount" mdbInputDirective>
+      <div *ngIf="amount.errors?.required && (amount.dirty || amount.touched ) " class="error">
+        Amount is required
+      </div>
+      <label for="amount">Amount</label>
+    </div>
+
+    <div class="md-form"> Currency
+      <select name="currency" [ngModel]="detail?.currency">
+        <option *ngFor="let item of currencyList" [ngValue]="item.key">
+          {{ item.value}}
+        </option>
+      </select>
+    </div>
+
+    <div class="md-form">
+      <i class="fa fa-calendar prefix grey-text"></i>
+      <input type="date" id="txn_date" name="txn_date" #txn_date="ngModel" required class="form-control" [ngModel]="detail?.txn_date" mdbInputDirective>
+      <div *ngIf="txn_date.errors?.required && (txn_date.dirty || txn_date.touched ) " class="error">
+        Date is required
+      </div>
+    </div>
+
+    <div class="text-center">
+      <button type="submit" [disabled]="form.invalid" class="btn btn-light-green waves-light" mdbWavesEffect>Update
+        <i class="fa fa-paper-plane-o ml-1"></i>
+      </button>
+      <button type="button" (click)="cancel()" class="btn btn-unique waves-light" mdbWavesEffect>Cancel
+        <i class="fa fa-close ml-1"></i>
+      </button>
+    </div>
+  </form>
+</div>
