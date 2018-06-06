@@ -1,6 +1,6 @@
 <div class="container">
   <form #form="ngForm" (ngSubmit)="onSubmit(form.value, form.valid)" novalidate>
-    <p class="h5 text-center mb-4">Add A Transaction</p>
+    <p class="h5 text-center mb-4 red-text mt-5">Add A Transaction</p>
 
     <div class="md-form">
       <i class="fa fa-id-badge prefix grey-text"></i>
@@ -35,7 +35,7 @@
 
     <div class="md-form"> Currency
       <select name="currency" ngModel="currency" class="form-control">
-        <option *ngFor="let item of currencyList" [ngValue]="item.key">
+        <option *ngFor="let item of currency" [ngValue]="item.key">
           {{ item.value}}
         </option>
       </select>

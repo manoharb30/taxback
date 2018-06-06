@@ -4,6 +4,7 @@ import { FormControl, FormGroup, FormArray, FormBuilder, Validators } from "@ang
 
 import { Router } from '@angular/router';
 import { TRANS } from "../models/transaction.interface";
+import { CURRENCY } from "../models/transaction.interface";
 import { DataService } from "../data.service";
 
 
@@ -21,11 +22,11 @@ export class AddtransactionComponent implements OnInit {
   value: TRANS;
 
   contactForm: FormGroup;
-  currencyList: object[] = [
-    { key: 1, value: 'INR' },
-    { key: 2, value: 'EUR' },
-    { key: 3, value: 'GBP' },
-    { key: 4, value: 'USD' },
+  currency: CURRENCY[] = [
+    { key: 'INR', value: 'INR' },
+    { key: 'EUR', value: 'EUR' },
+    { key: 'GBP', value: 'GBP' },
+    { key: 'USD', value: 'USD' },
   ]
   constructor(private data: DataService, private router: Router, public progress: NgProgress) {
 
@@ -35,16 +36,14 @@ export class AddtransactionComponent implements OnInit {
 
   onSubmit(value: TRANS, valid: boolean) {
     if (valid) {
-      value.currency = "INR";
-      console.log(value);
-
       this.data.addTransaction(value).subscribe((res) => {
         console.log(res);
       })
 
     }
-
-    this.router.navigateByUrl('/');
+    setTimeout(() => {
+      this.router.navigateByUrl('/')
+    }, 1000);
   }
 
   cancel() {

@@ -6,3 +6,8 @@ export interface TRANS {
     txn_date: string
 
 }
+
+export interface CURRENCY {
+    key: string,
+    value: string
+}

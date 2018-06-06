@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { DataService } from "../data.service";
 import { TRANS } from '../models/transaction.interface'
+import { CURRENCY } from "../models/transaction.interface";
 import 'rxjs/add/operator/switchMap';
 
 @Component({
@@ -12,11 +13,11 @@ import 'rxjs/add/operator/switchMap';
 export class DetailComponent implements OnInit {
 
   detail: object;
-currencyList: object[] = [
-    { key: 1, value: 'INR' },
-    { key: 2, value: 'EUR' },
-    { key: 3, value: 'GBP' },
-    { key: 4, value: 'USD' },
+  currency: CURRENCY[] = [
+    { key: 'INR', value: 'INR' },
+    { key: 'EUR', value: 'EUR' },
+    { key: 'GBP', value: 'GBP' },
+    { key: 'USD', value: 'USD' },
   ]
   constructor(private data: DataService,
     private router: Router,
