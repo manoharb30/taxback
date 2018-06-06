@@ -24,19 +24,8 @@ export class DashboardComponent implements OnInit {
       // Reading the HTTP response
       // Note the generic
       .subscribe((response: HttpResponse<TRANS[]>) => {
-        console.log('HTTP response', response);
-        console.log('HTTP response : Headers', response.headers);
-        console.log('HTTP response : status', response.status);
-        console.log('HTTP response : url', response.url);
-        // Note that we don't need parse the response, we can access
-        // it directly through 'body' property
-        console.log('HTTP response : body', response.body);
         this.transdata$ = response.body;
       });
-
-    // this.data.getUsers().subscribe(
-    //   data => this.transdata$ = data
-    // )
   }
 
   addTransaction() {
@@ -53,11 +42,6 @@ export class DashboardComponent implements OnInit {
         return txn.id !== data.id;
       });
     });
-    // this.data.deleteUser(data.id).subscribe(
-    //   data => {
-    //     console.log(data);
-    //   }
-    // )
   }
 
 }

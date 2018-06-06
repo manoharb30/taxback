@@ -6,8 +6,8 @@ import { AddtransactionComponent } from './addtransaction/addtransaction.compone
 import { NotFoundComponent } from './notfound.component';
 
 const routes: Routes = [
-    { path: '', component: DashboardComponent },
-    { path: '**', component: NotFoundComponent },
+    { path: '', component: DashboardComponent, pathMatch: 'full' },
+    // { path: '**', component: NotFoundComponent },
 
     { path: 'details/:id', component: DetailComponent },
     { path: 'add', component: AddtransactionComponent }

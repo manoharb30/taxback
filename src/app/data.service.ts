@@ -40,7 +40,8 @@ export class DataService {
   }
 
   addTransaction(trans: TRANS) {
-    return this.http.post(USER_API, trans, options);
+    let body = JSON.stringify(trans);
+    return this.http.post(USER_API, body, options);
   }
 
   updateTransaction(trans: TRANS) {

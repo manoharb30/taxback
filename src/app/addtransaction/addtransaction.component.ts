@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { NgProgress } from '@ngx-progressbar/core';
 import { FormControl, FormGroup, FormArray, FormBuilder, Validators } from "@angular/forms";
 
 import { Router } from '@angular/router';
@@ -15,7 +15,7 @@ import { DataService } from "../data.service";
   styleUrls: ['./addtransaction.component.scss']
 })
 export class AddtransactionComponent implements OnInit {
-
+  sending: boolean = false;
   optionsSelect: Array<any>;
 
   value: TRANS;
@@ -27,22 +27,23 @@ export class AddtransactionComponent implements OnInit {
     { key: 3, value: 'GBP' },
     { key: 4, value: 'USD' },
   ]
-  constructor(private data: DataService, private router: Router) {
+  constructor(private data: DataService, private router: Router, public progress: NgProgress) {
 
   }
   ngOnInit() {
-
   }
 
   onSubmit(value: TRANS, valid: boolean) {
     if (valid) {
       value.currency = "INR";
       console.log(value);
+
       this.data.addTransaction(value).subscribe((res) => {
         console.log(res);
       })
 
     }
+
     this.router.navigateByUrl('/');
   }
 

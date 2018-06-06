@@ -11,6 +11,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { DetailComponent } from './detail/detail.component';
 import { AddtransactionComponent } from './addtransaction/addtransaction.component';
 import { NotFoundComponent } from "./notfound.component";
+import { NgProgressModule } from '@ngx-progressbar/core';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { NotFoundComponent } from "./notfound.component";
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    NgProgressModule.forRoot(),
     MDBBootstrapModule.forRoot(),
     AppRoutingModule
   ],
